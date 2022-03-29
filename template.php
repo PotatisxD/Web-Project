@@ -11,7 +11,7 @@ session_name('Website');
 session_start();
 $host = "localhost";
 $user = "felcar21"; 
-$pwd = "";
+$pwd = "AmsOzPBsKR";
 $db = "felcar21_db";
 $mysqli = new mysqli($host, $user, $pwd, $db);
 $navigation = <<<END

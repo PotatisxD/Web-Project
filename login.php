@@ -4,9 +4,9 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 $name = $mysqli->real_escape_string($_POST['username']);
 $pwd = $mysqli->real_escape_string($_POST['password']);
 $query = <<<END
-SELECT username, password, id FROM users
-WHERE username = '{$name}'
-AND password = '{$pwd}'
+SELECT UserName, Password, UserID FROM project_User
+WHERE UserName = '{$name}'
+AND Password = '{$pwd}'
 END;
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
