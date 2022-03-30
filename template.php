@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Smart Home Gui</title>
 <meta charset="utf-8">
-<link rel="stylesheet" property="stylesheet" type="text/css" href="css/stylesheet.css">
-</head>
+<link rel="stylesheet" href="media/css/style.css">
+<link rel="stylesheet" href="sidebars.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<title>Smart Home GUI</title></head>
 
 <?php
 session_name('Website');
@@ -16,19 +18,64 @@ $db = "felcar21_db";
 $mysqli = new mysqli($host, $user, $pwd, $db);
 $navigation = <<<END
 <nav>
- <a href="index.php">Home</a>
- <a href="about.php">About</a>
- <a href="devices.php">Devices</a>
- <a href="login.php">LOGIN</a>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh; float: left;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-4">Sidebar</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="index.php" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16" >
+                    <use xlink:href="#home" />
+                </svg>
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="dashboard.php" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#dashboard" />
+                </svg>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="products.php" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#products" />
+                </svg>
+                Products
+            </a>
+        </li>
+        <li>
+            <a href="customers.php" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#customers" />
+                </svg>
+                Customers
+            </a>
+        </li>
+        <li>
+        <a href="login.php" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#login" />
+            </svg>
+            Login
+        </a>
+    </li>
+    </ul>
+    <hr>
+</div>
 END;
 
-if (isset($_SESSION['userId']))
+if (isset($_SESSION['UserID']))
 {
  $navigation .= <<<END
  <a href="add_product.php">Add product</a>
  <a href="register.php">Reigster new user</a>
  <a href="logout.php">Logout</a>
- Logged in as {$_SESSION['username']}
+ Logged in as {$_SESSION['UserName']}
 END;
 }
  $navigation .= '</nav>';

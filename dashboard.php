@@ -1,9 +1,9 @@
 <?php
 include('template.php');
 $content = <<<END
-<h1>Welcome to this website</h1>
+<h1>Dashboard</h1>
 <p>
-This is gonna be a Smart Home GUI
+The Dashboard
 </p>
 END;
 echo $navigation;
