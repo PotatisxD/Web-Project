@@ -69,13 +69,13 @@ $navigation = <<<END
 </div>
 END;
 
-if (isset($_SESSION['UserID']))
+if (isset($_SESSION['userId']))
 {
  $navigation .= <<<END
  <a href="add_product.php">Add product</a>
  <a href="register.php">Reigster new user</a>
  <a href="logout.php">Logout</a>
- Logged in as {$_SESSION['UserName']}
+ Logged in as {$_SESSION['username']}
 END;
 }
  $navigation .= '</nav>';

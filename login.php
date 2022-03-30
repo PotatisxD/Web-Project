@@ -12,14 +12,13 @@ $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
 $row = $result->fetch_object();
 $_SESSION["username"] = $row->username;
-$_SESSION["userId"] = $row->id;
+$_SESSION["userId"] = $row->UserID;
 header("Location:index.php");
 } else {
   echo '<script>alert("Wrong username or password")</script>';
 }
 }
-?>
-
+$content = <<<END
 <!doctype html>
 <html lang="en">
   <head>
@@ -52,3 +51,7 @@ header("Location:index.php");
     </main>
   </body>
 </html>
+END;
+echo $navigation;
+echo $content;
+?>
