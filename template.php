@@ -64,9 +64,7 @@ $navigation = <<<END
             Login
         </a>
     </li>
-    </ul>
     <hr>
-</div>
 END;
 
 if (isset($_SESSION['userId']))
@@ -76,6 +74,8 @@ if (isset($_SESSION['userId']))
  <a href="register.php">Reigster new user</a>
  <a href="logout.php">Logout</a>
  Logged in as {$_SESSION['username']}
+ </div>
+ </ul>
 END;
 }
  $navigation .= '</nav>';
