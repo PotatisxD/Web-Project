@@ -33,27 +33,27 @@ $navigation = <<<END
             </a>
         </li>
         <li>
-            <a href="dashboard.php" class="nav-link text-white">
+            <a href="devices.php" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#dashboard" />
+                    <use xlink:href="#devices" />
                 </svg>
-                Dashboard
+                Devices
             </a>
         </li>
         <li>
-            <a href="products.php" class="nav-link text-white">
+            <a href="rooms.php" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#products" />
+                    <use xlink:href="#rooms" />
                 </svg>
-                Products
+                Rooms
             </a>
         </li>
         <li>
-            <a href="customers.php" class="nav-link text-white">
+            <a href="analytics.php" class="nav-link text-white">
                 <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#customers" />
+                    <use xlink:href="#analytics" />
                 </svg>
-                Customers
+                Analytics
             </a>
         </li>
         <li>
