@@ -18,7 +18,7 @@ $navigation = <<<END
 <nav>
  <a href="index.php">Home</a>
  <a href="about.php">About</a>
- <a href="products.php">Products</a>
+ <a href="devices.php">Devices</a>
  <a href="login.php">LOGIN</a>
 END;
 
