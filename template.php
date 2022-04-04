@@ -16,6 +16,7 @@ $user = "felcar21";
 $pwd = "AmsOzPBsKR";
 $db = "felcar21_db";
 $mysqli = new mysqli($host, $user, $pwd, $db);
+include("log.php");
 $navigation = <<<END
 <nav>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh; float: left;">
@@ -69,15 +70,9 @@ END;
 
 if (isset($_SESSION['userId']))
 {
- $navigation .= <<<END
- <a href="add_product.php">Add product</a>
- <a href="register.php">Reigster new user</a>
- <a href="logout.php">Logout</a>
- Logged in as {$_SESSION['username']}
- </div>
- </ul>
-END;
+    
 }
+LogUserInfo();
  $navigation .= '</nav>';
 
 ?>
