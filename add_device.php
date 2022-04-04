@@ -14,7 +14,8 @@ echo 'Product added to the database!';
 
 $sql = "SELECT * FROM project_Room";
 $all_rooms = $mysqli->query($sql);
-
+$sqltwo = "SELECT * FROM project_DeviceType";
+$all_types = $mysqli->query($sqltwo);
 
 echo $navigation;
 ?>
@@ -22,7 +23,22 @@ echo $navigation;
 <h1>Add device</h1>
 <form method="post" action="add_device.php">
 <input type="text" name="name" placeholder="Device name"><br>
-<input type="text" name="type" placeholder="type"><br>
+<label for="type">Choose device type:</label>
+<select name="type">
+        <?php 
+        while ($type = mysqli_fetch_array(
+            $all_types,MYSQLI_ASSOC)):; 
+        ?>
+        <option value="<?php echo $type["DeviceTypeID"];
+        ?>">
+        <?php echo $type["DeviceType"];
+        ?>
+        </option>
+        <?php 
+        endwhile; 
+        ?>
+</select><br>
+<label for="room">Choose which room:</label>
 <select name="room">
         <?php 
         while ($room = mysqli_fetch_array(
@@ -36,8 +52,8 @@ echo $navigation;
         <?php 
         endwhile; 
         ?>
-</select>
-<input type="submit" value="Add product">
+</select><br>
+<input type="submit" value="Add device">
 <input type="reset" value="reset">
 </form>
     </body>
