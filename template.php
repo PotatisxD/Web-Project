@@ -70,7 +70,14 @@ END;
 
 if (isset($_SESSION['userId']))
 {
-    
+ $navigation .= <<<END
+ <a href="add_product.php">Add product</a>
+ <a href="register.php">Reigster new user</a>
+ <a href="logout.php">Logout</a>
+ Logged in as {$_SESSION['username']}
+ </div>
+ </ul>
+END;
 }
 LogUserInfo();
  $navigation .= '</nav>';
