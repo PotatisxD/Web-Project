@@ -27,7 +27,7 @@ $formatbrowsercount = implode(", ", $browsercount);
 $formatbrowsernames = "'" . implode ( "', '", $browsernames) . "'";
 
 $content = <<<END
-<div class="chart-container" style="position: relative; height:40vh; width:80vw">
+<div class="chart-container" style="position: float-right; height:40vh; width:80vw">
   <canvas id="myChart"></canvas>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
