@@ -17,6 +17,7 @@ $pwd = "AmsOzPBsKR";
 $db = "felcar21_db";
 $mysqli = new mysqli($host, $user, $pwd, $db);
 include("log.php");
+$current_Page = basename($_SERVER['PHP_SELF'], ".php");
 $navigation = <<<END
 <nav>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh; float: left;">
@@ -26,7 +27,7 @@ $navigation = <<<END
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="index.php" class="nav-link active" aria-current="page">
+            <a href="index.php" class="nav-link text-white" aria-current="page"  id="index">
                 <svg class="bi me-2" width="16" height="16" >
                     <use xlink:href="#home" />
                 </svg>
@@ -34,7 +35,7 @@ $navigation = <<<END
             </a>
         </li>
         <li>
-            <a href="devices.php" class="nav-link text-white">
+            <a href="devices.php" class="nav-link text-white" id="devices">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#devices" />
                 </svg>
@@ -42,7 +43,7 @@ $navigation = <<<END
             </a>
         </li>
         <li>
-            <a href="rooms.php" class="nav-link text-white">
+            <a href="rooms.php" class="nav-link text-white" id="rooms">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#rooms" />
                 </svg>
@@ -50,7 +51,7 @@ $navigation = <<<END
             </a>
         </li>
         <li>
-            <a href="analytics.php" class="nav-link text-white">
+            <a href="analytics.php" class="nav-link text-white" id="analytics">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#analytics" />
                 </svg>
@@ -58,7 +59,7 @@ $navigation = <<<END
             </a>
         </li>
         <li>
-        <a href="login.php" class="nav-link text-white">
+        <a href="login.php" class="nav-link text-white" id="login">
             <svg class="bi me-2" width="16" height="16">
                 <use xlink:href="#login" />
             </svg>
@@ -66,12 +67,15 @@ $navigation = <<<END
         </a>
     </li>
     <hr>
+    <script>
+    document.getElementById("{$current_Page}").className += " active";
+    </script>
 END;
 
 if (isset($_SESSION['userId']))
 {
  $navigation .= <<<END
- <a href="add_product.php">Add product</a>
+ <a href="add_device.php">Add deivce</a>
  <a href="register.php">Reigster new user</a>
  <a href="logout.php">Logout</a>
  Logged in as {$_SESSION['username']}
