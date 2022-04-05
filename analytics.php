@@ -25,7 +25,6 @@ array_push($browsernames, $row->BrowserName);
 }
 $formatbrowsercount = implode(", ", $browsercount);
 $formatbrowsernames = "'" . implode ( "', '", $browsernames) . "'";
-echo $formatbrowsernames;
 
 $content = <<<END
 <div class="chart-container" style="position: relative; height:40vh; width:80vw">
