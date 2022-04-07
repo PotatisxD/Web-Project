@@ -32,6 +32,7 @@ $formatbrowsernames = "'" . implode ( "', '", $browsernames) . "'";
 
 $content = <<<END
 <div class="chart-container" style="position:absolute; height:300px; width:400px; top:50px; right:350px;">
+<p>Most common browser</p>
 <canvas id="myChart"></canvas>
 </div>
 <div id="iptable">
@@ -122,6 +123,7 @@ $query2 = <<<END
 SELECT PageID, TimeStamp
 FROM project_Log
 WHERE LogID="{$row->LogID}"
+ORDER BY TimeStamp DESC
 END;
 $result2 = $mysqli->query($query2);
 $temp = $result2->fetch_object();

@@ -71,14 +71,24 @@ $navigation = <<<END
     document.getElementById("{$current_Page}").className += " active";
     </script>
 END;
-
 if (isset($_SESSION['userId']))
 {
+$current_UserID = $_SESSION['userId'];
+$query = <<<END
+SELECT * 
+FROM project_Admin
+WHERE UserID="{$current_UserID}"
+END;
+$result = $mysqli->query($query);
+if (mysqli_num_rows($result) != 0)
+{
+echo "hej";
+}
  $navigation .= <<<END
  <a href="add_device.php">Add deivce</a>
  <a href="register.php">Reigster new user</a>
  <a href="logout.php">Logout</a>
- Logged in as {$_SESSION['username']}
+ Logged in as {$current_UserID}
  </div>
  </ul>
 END;
