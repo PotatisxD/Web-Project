@@ -38,7 +38,7 @@ $current_PageID = $temp->PageID;
 function get_browser_name($user_agent)
 {
     if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')) return 'Opera';
-    elseif (strpos($user_agent, 'Edge')) return 'Edge';
+    elseif (strpos($user_agent, 'Edge')  || strpos($user_agent, 'Edg' )) return 'Edge';
     elseif (strpos($user_agent, 'Chrome')) return 'Chrome';
     elseif (strpos($user_agent, 'Safari')) return 'Safari';
     elseif (strpos($user_agent, 'Firefox')) return 'Firefox';
@@ -47,7 +47,6 @@ function get_browser_name($user_agent)
     return 'Other';
 }
 $current_Browser = get_browser_name($_SERVER['HTTP_USER_AGENT']);
-
 //Creates a new Browser in database if the current one does not exist
 
 $query = <<<END
