@@ -1,30 +1,32 @@
 <?php
 include_once('template.php');
 $content = 'Edit USER';
-if (isset($_GET['id'])) {
+ if (isset($_GET['id'])) {
  if (isset($_POST['name'])) {
- $query = <<<END
+$query = <<<END
 UPDATE project_User
- SET UserName = '{$_POST['name']}',
- WHERE id = '{$_GET['id']}'
+SET UserName = '{$_POST['name']}'
+WHERE UserID = '{$_GET['id']}'
 END;
- $mysqli->query($query);
- }
+$mysqli->query($query);
+}
  $query = <<<END
-SELECT * FROM project_User
- WHERE id = '{$_GET['id']}'
+SELECT *
+FROM project_User
+WHERE UserID = '{$_GET['id']}'
 END;
- $res = $mysqli->query($query);
- if ($res->num_rows > 0) {
- $row = $res->fetch_object();
- $content = <<<END
-<form method="post" action="edit_user.php?id={$row->id}">
- <input type="text" name="name" value="{$row->name}"><br>
+$res = $mysqli->query($query);
+if ($res->num_rows > 0) {
+$row = $res->fetch_object();
+$content = <<<END
+<h1>Edit User</h1>
+<form method="post" action="edit_user.php?id={$row->UserID}">
+<input type="text" name="name" value="{$row->UserName}"><br>
 
- <input type="submit" value="save">
- </form>
+<input type="submit" value="save">
+</form>
 END;
- }
+}
 }
 echo $navigation;
 echo $content;

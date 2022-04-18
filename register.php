@@ -13,6 +13,7 @@ END;
  }
 }
 $content = <<<END
+<h1>Reigster New User</h1>
 <form method="post" action="register.php">
 <input type = "text" name="username" placeholder="username" ><br>
 <input type="password" name="password" placeholder="password"><br>
