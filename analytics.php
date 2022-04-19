@@ -118,7 +118,7 @@ echo "</tr>";
 $query1 = <<<END
 SELECT UserID, LogID
 FROM project_UserLog
-ORDER BY UserID
+ORDER BY LogID DESC
 END;
 
 $result1 = $mysqli->query($query1);
@@ -128,7 +128,6 @@ $query2 = <<<END
 SELECT PageID, TimeStamp
 FROM project_Log
 WHERE LogID="{$row->LogID}"
-ORDER BY TimeStamp DESC
 END;
 $result2 = $mysqli->query($query2);
 $temp = $result2->fetch_object();
