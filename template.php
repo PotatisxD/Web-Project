@@ -51,6 +51,14 @@ $navigation = <<<END
             </a>
         </li>
         <li>
+            <a href="users.php" class="nav-link text-white" id="users">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#analytics" />
+                </svg>
+                Users
+            </a>
+        </li>
+        <li>
             <a href="analytics.php" class="nav-link text-white" id="analytics">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#analytics" />
