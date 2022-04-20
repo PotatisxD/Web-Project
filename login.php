@@ -1,5 +1,6 @@
 <?php
-include('template.php');
+$title = "Login";
+require_once("template.php");
 if (isset($_POST['username']) and isset($_POST['password'])) {
 $name = $mysqli->real_escape_string($_POST['username']);
 $pwd = $mysqli->real_escape_string($_POST['password']);
@@ -11,9 +12,9 @@ END;
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
 $row = $result->fetch_object();
-$_SESSION["username"] = $row->username;
+$_SESSION["username"] = $row->UserName;
 $_SESSION["userId"] = $row->UserID;
-header("Location:index.php");
+header("Location:home.php");
 } else {
   echo '<script>alert("Wrong username or password")</script>';
 }
@@ -52,6 +53,5 @@ $content = <<<END
   </body>
 </html>
 END;
-echo $navigation;
 echo $content;
 ?>

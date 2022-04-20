@@ -1,4 +1,5 @@
 <?php
+$title = "Analytics";
 require_once('template.php');
 function createIpTable(){
 

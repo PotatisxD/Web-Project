@@ -1,9 +1,5 @@
 <?php
-$host = "localhost";
-$user = "felcar21"; 
-$pwd = "AmsOzPBsKR";
-$db = "felcar21_db";
-$mysqli = new mysqli($host, $user, $pwd, $db);
+require_once("configDB.php");
 $deviceid = $_GET['DeviceID'];
 $query = <<<END
 SELECT project_PropertyOverTime.Value

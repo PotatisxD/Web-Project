@@ -1,4 +1,5 @@
 <?php
+$title = "Devices";
 require_once('template.php');
 $content = '<h1>Devices</h1>';
 $query = <<<END
