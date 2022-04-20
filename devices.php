@@ -1,7 +1,10 @@
 <?php
 $title = "Devices";
 require_once('template.php');
-$current_User = $_SESSION['username'];
+if(isset($_SESSION['username']))
+{
+    $current_UserID = $_SESSION['userId'];
+}
 $content = '<h1>Devices</h1>';
 $query = <<<END
 SELECT project_Device.DeviceName, project_Room.Room, project_DeviceType.DeviceType, project_Device.DeviceID
