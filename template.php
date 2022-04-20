@@ -9,7 +9,7 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
 <title><?php if(isset($title)){echo $title;} else {echo "Smart Home";} ?></title></head>
 
 <?php
-session_name("Website");
+session_name("s" . ip2long($_SERVER["REMOTE_ADDR"]));
 session_start();
 include("log.php");
 require_once("configDB.php");
@@ -127,10 +127,15 @@ END;
 $navigation .= <<<END
 <a href="add_device.php">Add deivce</a>
 <a href="register.php">Reigster new user</a>
-<a href="logout.php">Logout</a>
 Logged in as {$current_User}
 </div>
 </ul>
+END;
+}
+else
+{
+$navigation .= <<<END
+Logged in as {$current_User}
 END;
 }
 }
