@@ -32,6 +32,24 @@ $content .= <<<END
 <button class = "{$row2->Value}" id="button{$row->DeviceID}" onclick="SetStatus({$row->DeviceID})">{$row2->Value}</button><br>
 
 END;
+if (isset($_SESSION['userId']))
+{
+$current_UserID = $_SESSION['userId'];
+$current_User = $_SESSION['username'];
+$query = <<<END
+SELECT * 
+FROM project_Admin
+WHERE UserID="{$current_UserID}"
+END;
+$result = $mysqli->query($query);
+if (mysqli_num_rows($result) != 0)
+$content .= <<<END
+    <a href="delete_device.php?DeviceID={$row->DeviceID}" onclick="return confirm('Are you sure you want to remove this device?')">
+    Remove device</a> |
+    <a href="edit_device.php?DeviceID={$row->DeviceID}">Edit device</a><br>
+    <br>
+END;
+}
 }
 }
 $content .= <<<END

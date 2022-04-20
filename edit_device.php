@@ -13,6 +13,7 @@ RoomID = '{$room}'
 WHERE DeviceID = '{$_GET['DeviceID']}'
 END;
 $mysqli->query($query);
+header('Location:devices.php');
 }
 }
 $sql = "SELECT * FROM project_Room";
