@@ -1,6 +1,7 @@
 <?php
 $title = "Devices";
 require_once('template.php');
+$current_User = $_SESSION['username'];
 $content = '<h1>Devices</h1>';
 $query = <<<END
 SELECT project_Device.DeviceName, project_Room.Room, project_DeviceType.DeviceType, project_Device.DeviceID
@@ -34,7 +35,7 @@ $content .= <<<END
 <script>
 function SetStatus(counter){
 currentButton = document.getElementById("button" + counter);
-let response = fetch("DeviceStatus.php?" + new URLSearchParams({DeviceID: counter,}), {
+let response = fetch("DeviceStatus.php?" + new URLSearchParams({DeviceID: counter, UserID: {$current_UserID}}), {
     method: 'get',
 }).then(function(response) {
         if (response.status >= 200 && response.status < 300) {

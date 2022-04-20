@@ -1,6 +1,7 @@
 <?php
 require_once("configDB.php");
 $deviceid = $_GET['DeviceID'];
+$userid = $_GET["UserID"];
 $query = <<<END
 SELECT project_PropertyOverTime.Value
 FROM project_PropertyOverTime
@@ -16,7 +17,7 @@ $row = $res->fetch_object();
 if($row->Value == "On")
 {
 $query = <<<END
-INSERT INTO project_PropertyOverTime VALUES (NULL, 1 , {$deviceid}, "Off", CURRENT_TIMESTAMP, 1)
+INSERT INTO project_PropertyOverTime VALUES (NULL, 1, {$deviceid}, "Off", CURRENT_TIMESTAMP, {$userid})
 END;
 $mysqli->query($query);
 echo "Off";
@@ -24,7 +25,7 @@ echo "Off";
 else 
 {
 $query = <<<END
-INSERT INTO project_PropertyOverTime VALUES (NULL, 1 , {$deviceid}, "On", CURRENT_TIMESTAMP, 1)
+INSERT INTO project_PropertyOverTime VALUES (NULL, 1, {$deviceid}, "On", CURRENT_TIMESTAMP, {$userid})
 END;
 echo "On";
 $mysqli->query($query);
