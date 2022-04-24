@@ -106,57 +106,125 @@ echo "<td> {$count} </td>";
 echo "</tr>";
 }
 }
-echo "</table>";
+$sql = "SELECT * FROM project_User";
+$all_users = $mysqli->query($sql);
+?>
+<body>
+<h1>Select User</h1>
+<form method="post" action="analytics.php">
+<label for="user">Choose User</label>
+<select name="user">
+        <?php 
+        while ($user = mysqli_fetch_array(
+            $all_users,MYSQLI_ASSOC)):; 
+        ?>
+        <option value="<?php echo $user["UserID"];
+        ?>">
+        <?php echo $user["UserName"];
+        ?>
+        </option>
+        <?php 
+        endwhile; 
+        ?>
+<input type="submit" value="Select User">
+<input type="reset" value="reset">
+</form>
+<script>
+async function SetTable(user, counter = 1){
+let response = await fetch("userhistory.php?" + new URLSearchParams({UserID: user, Page: counter}), {
+    method: 'get',
+}).then(function(response) {
+        if (response.status >= 200 && response.status < 300) {
+                return response.text()
+        }
+        throw new Error(response.statusText)
+    })
+    .then(function(response) {
+      try {
+        const child = document.getElementById("userhistory");
+        child.remove();
+        const child2 = document.getElementById("backbutton");
+        child2.remove();
+        const child3 = document.getElementById("forwardbutton");
+        child3.remove();
+      }
+      catch{
 
-echo '<table border=1px;>';
-echo "<tr border=1px;>";
-echo "<td>User</td>";
-echo "<td>Page</td>";
-echo "<td>Date</td>";
-echo "</tr>";
+      }
+        let array = JSON.parse(response);
+        let table = document.createElement('table');
+        table.id = "userhistory";
+        let tr = document.createElement('tr');
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let text1 = document.createTextNode('User');
+        let text2 = document.createTextNode('Page');
+        let text3 = document.createTextNode('Date');
+        td1.appendChild(text1);
+        td2.appendChild(text2);
+        td3.appendChild(text3);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        table.appendChild(tr);
+        for (let i = 0; i<10; i++) {
+          let tr = document.createElement('tr');
+          let td1 = document.createElement('td');
+          let td2 = document.createElement('td');
+          let td3 = document.createElement('td');
+          let text1 = document.createTextNode(array[i][0]);
+          let text2 = document.createTextNode(array[i][1]);
+          let text3 = document.createTextNode(array[i][2]);
+          td1.appendChild(text1);
+          td2.appendChild(text2);
+          td3.appendChild(text3);
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          table.appendChild(tr);
+        
+        }
+        document.body.appendChild(table);
 
-
-$query1 = <<<END
-SELECT UserID, LogID
-FROM project_UserLog
-ORDER BY LogID DESC
-END;
-
-$result1 = $mysqli->query($query1);
-if ($result1->num_rows > 0) {
-while ($row = $result1->fetch_object()) {
-$query2 = <<<END
-SELECT PageID, TimeStamp
-FROM project_Log
-WHERE LogID="{$row->LogID}"
-END;
-$result2 = $mysqli->query($query2);
-$temp = $result2->fetch_object();
-
-$query3 = <<<END
-SELECT project_Page.Page
-FROM project_Page
-WHERE PageID="{$temp->PageID}"
-END;
-
-$result3 = $mysqli->query($query3);
-$temp2 = $result3->fetch_object();
-$current_Page = $temp2->Page;
-
-$query4 = <<<END
-SELECT project_User.UserName
-FROM project_User
-WHERE UserID="{$row->UserID}"
-END;
-$result4 = $mysqli->query($query4);
-$temp3 = $result4->fetch_object();
-
-echo "<tr border=1px;>";
-echo "<td> {$temp3->UserName} </td>";
-echo "<td> {$current_Page} </td>";
-echo "<td> {$temp->TimeStamp} </td>";
-echo "</tr>";
+        let backbutton = document.createElement('button');
+        backbutton.innerHTML  = "Back";
+        backbutton.id= "backbutton";
+        backbutton.onclick  = function (){
+        if(counter > 1)
+        {
+          SetTable(user, counter--);
+        }
+        else
+        {
+          SetTable(user, counter);
+        }
+        };
+        let forwardbutton = document.createElement('button');
+        forwardbutton.innerHTML  = "Forward";
+        forwardbutton.id= "forwardbutton";
+        forwardbutton.onclick  = function (){
+        SetTable(user, counter++);
+        };
+        document.body.appendChild(backbutton);
+        document.body.appendChild(forwardbutton);
+        
+        console.log(counter);
+        console.log(response);
+    })
+    
 }
+</script>
+</body>
+
+<?php
+if (isset($_POST['user'])) {
+$user = $mysqli->real_escape_string($_POST['user']);
+$content = <<<END
+<script type="text/javascript">
+SetTable({$user});
+</script>
+END;
+echo $content;
 }
-echo "</table>";
 ?>
