@@ -130,8 +130,9 @@ $all_users = $mysqli->query($sql);
 <input type="reset" value="reset">
 </form>
 <script>
-async function SetTable(user, counter = 1){
-let response = await fetch("userhistory.php?" + new URLSearchParams({UserID: user, Page: counter}), {
+function SetTable(user, counter = 1){
+
+let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Page: counter}), {
     method: 'get',
 }).then(function(response) {
         if (response.status >= 200 && response.status < 300) {
@@ -148,9 +149,11 @@ let response = await fetch("userhistory.php?" + new URLSearchParams({UserID: use
         const child3 = document.getElementById("forwardbutton");
         child3.remove();
       }
-      catch{
+      catch
+      {
 
       }
+        end = false;
         let array = JSON.parse(response);
         let table = document.createElement('table');
         table.id = "userhistory";
@@ -169,7 +172,8 @@ let response = await fetch("userhistory.php?" + new URLSearchParams({UserID: use
         tr.appendChild(td3);
         table.appendChild(tr);
         for (let i = 0; i<10; i++) {
-          let tr = document.createElement('tr');
+          if (i < array.length) {
+            let tr = document.createElement('tr');
           let td1 = document.createElement('td');
           let td2 = document.createElement('td');
           let td3 = document.createElement('td');
@@ -183,37 +187,46 @@ let response = await fetch("userhistory.php?" + new URLSearchParams({UserID: use
           tr.appendChild(td2);
           tr.appendChild(td3);
           table.appendChild(tr);
+          }
+          else
+          {
+            end = true;
+          }
+          
         
         }
         document.body.appendChild(table);
-
         let backbutton = document.createElement('button');
         backbutton.innerHTML  = "Back";
         backbutton.id= "backbutton";
-        backbutton.onclick  = function (){
-        if(counter > 1)
-        {
-          SetTable(user, counter--);
-        }
-        else
-        {
-          SetTable(user, counter);
-        }
+        backbutton.onclick = function(){
+          if(counter > 1)
+          {
+            newcounter = counter - 1;
+            SetTable(user,newcounter);
+          }
+        
         };
         let forwardbutton = document.createElement('button');
         forwardbutton.innerHTML  = "Forward";
         forwardbutton.id= "forwardbutton";
-        forwardbutton.onclick  = function (){
-        SetTable(user, counter++);
+        forwardbutton.onclick = function(){
+          if(end != true)
+          {
+            newcounter = counter + 1;
+            SetTable(user,newcounter);
+          }
+          
+        
         };
         document.body.appendChild(backbutton);
         document.body.appendChild(forwardbutton);
-        
         console.log(counter);
         console.log(response);
     })
     
 }
+
 </script>
 </body>
 

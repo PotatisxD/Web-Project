@@ -4,11 +4,21 @@ $userhistory = array();
 $newuserhistory = array();
 $userid = $_GET["UserID"];
 $page = $_GET["Page"];
+if($page == 1)
+{
+    $page = 0;
+}
+else
+{
+    $page = $page * 10;
+}
 $query1 = <<<END
 SELECT UserID, LogID
 FROM project_UserLog
 WHERE UserID="{$userid}"
 ORDER BY LogID DESC
+LIMIT 10
+OFFSET {$page} 
 END;
 
 $resultUserLog = $mysqli->query($query1);
@@ -43,9 +53,6 @@ $tempUser = $resultUser->fetch_object();
 array_push($userhistory, array($tempUser->UserName, $current_Page, $tempLog->TimeStamp));
 }
 }
-for($i = $page * 10 - 10; $i < $page * 10; $i++)
-{
-    array_push($newuserhistory, $userhistory[$i]);
-}
-echo json_encode($newuserhistory);
+echo json_encode($userhistory);
+
 ?>
