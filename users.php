@@ -15,7 +15,6 @@ $content .= <<<END
 {$row->Password} |
 {$row->UserID}<br>
 <a href="user_details.php?id={$row->UserID}">User Description</a>
-<br>
 END;
 if (isset($_SESSION['userId'])){
 $content .= <<<END
@@ -24,9 +23,15 @@ Remove User</a>|
 <a href="edit_user.php?id={$row->UserID}">Edit User</a><br>
 <br>
 END;
+} 
 }
 }
-}
+$content .= <<<END
+<br>
+<a href="admins.php"><button>LIST ALL CURRENT ADMINS</button></a>
+<br>
+<a href="add_admin.php"><button>ADD NEW ADMIN</button></a>
+END;
 echo $navigation;
 echo $content;
 ?>
