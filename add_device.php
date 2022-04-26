@@ -1,6 +1,8 @@
 <?php
 include_once('template.php');
+echo $navigation;
 if (isset($_POST['name'])) {
+
 $name = $mysqli->real_escape_string($_POST['name']);
 $type = $mysqli->real_escape_string($_POST['type']);
 $room = $mysqli->real_escape_string($_POST['room']);
@@ -9,6 +11,19 @@ INSERT INTO project_Device(DeviceName,DeviceTypeID,RoomID)
 VALUES('{$name}','{$type}','{$room}')
 END;
 $mysqli->query($query);
+$query2 = <<<END
+SELECT DeviceID 
+FROM project_Device
+WHERE DeviceName="{$name}" AND DeviceTypeID="{$type}" AND RoomID="{$room}"
+LIMIT 1;
+END;
+$result = $mysqli->query($query2);
+$deviceid = $result->fetch_object();
+$userid = $_SESSION['userId'];
+$query3 = <<<END
+INSERT INTO project_PropertyOverTime VALUES (NULL, 1, {$deviceid->DeviceID}, "Off", CURRENT_TIMESTAMP, {$userid})
+END;
+$mysqli->query($query3);
 echo 'Product added to the database!';
 }
 
@@ -16,8 +31,6 @@ $sql = "SELECT * FROM project_Room";
 $all_rooms = $mysqli->query($sql);
 $sqltwo = "SELECT * FROM project_DeviceType";
 $all_types = $mysqli->query($sqltwo);
-
-echo $navigation;
 ?>
 <body>
 <h1>Add device</h1>
