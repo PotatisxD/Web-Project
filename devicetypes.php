@@ -1,16 +1,16 @@
 <?php
-$title = "Rooms";
+$title = "DeviceType";
 require_once('template.php');
-$content = '<h1>Rooms</h1>';
+$content = '<h1>DeviceTypes</h1>';
 $query = <<<END
-SELECT Room, RoomID
-FROM project_Room
+SELECT DeviceType, DeviceTypeID
+FROM project_DeviceType
 END;
 $res = $mysqli->query($query);
 if ($res->num_rows > 0) {
 while ($row = $res->fetch_object()) {
 $content .= <<<END
-{$row->Room}<br>
+{$row->DeviceType}<br>
 END;
 
 if (isset($_SESSION['userId']))
@@ -25,9 +25,9 @@ END;
 $result = $mysqli->query($query);
 if (mysqli_num_rows($result) != 0)
 $content .= <<<END
-    <a href="delete_room.php?RoomID={$row->RoomID}" onclick="return confirm('Are you sure you want to remove this room?This will delete all devices in this room as well.')">
-    Remove room</a> |
-    <a href="edit_room.php?RoomID={$row->RoomID}">Edit room</a><br>
+    <a href="delete_devicetype.php?DeviceTypeID={$row->DeviceTypeID}" onclick="return confirm('Are you sure you want to remove this devicetype? This will delete all devices of this type as well.')">
+    Remove DeviceType</a> |
+    <a href="edit_devicetype.php?DeviceTypeID={$row->DeviceTypeID}">Edit DeviceType</a><br>
     <br>
 END;
 }

@@ -112,6 +112,14 @@ if (mysqli_num_rows($result) != 0)
                 </a>
             </li>
             <li>
+                <a href="devicetypes.php" class="nav-link text-white" id="devicetypes">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#devicetypes" />
+                    </svg>
+                    DeviceTypes
+                </a>
+            </li>
+            <li>
             <a href="logout.php" class="nav-link text-white" id="logout">
                 <svg class="bi me-2" width="16" height="16">
                     <use xlink:href="#login" />
