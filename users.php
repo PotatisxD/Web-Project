@@ -15,6 +15,7 @@ $content .= <<<END
 {$row->Password} |
 {$row->UserID}<br>
 <a href="user_details.php?id={$row->UserID}">User Description</a>
+<br>
 END;
 if (isset($_SESSION['userId'])){
 $content .= <<<END
