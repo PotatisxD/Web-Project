@@ -133,7 +133,6 @@ if (mysqli_num_rows($result) != 0)
         </script>
 END;
 $navigation .= <<<END
-<a href="add_device.php">Add deivce</a>
 <a href="register.php">Reigster new user</a>
 Logged in as {$current_User}
 </div>

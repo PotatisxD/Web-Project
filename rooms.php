@@ -32,6 +32,10 @@ $content .= <<<END
 END;
 }
 }
+$content .= <<<END
+<button onclick="location.href='add_room.php'" type="button">
+Add Room</button>
+END;
 }
 echo $navigation;
 echo $content;
