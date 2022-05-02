@@ -32,6 +32,10 @@ $content .= <<<END
 END;
 }
 }
+$content .= <<<END
+<button onclick="location.href='add_devicetype.php'" type="button">
+Add DeviceType</button>
+END;
 }
 echo $navigation;
 echo $content;
