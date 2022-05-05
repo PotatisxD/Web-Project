@@ -14,7 +14,7 @@ $mysqli->query($query);
 $query2 = <<<END
 SELECT DeviceID 
 FROM project_Device
-WHERE DeviceName="{$name}" AND DeviceTypeID="{$type}" AND RoomID="{$room}"
+ORDER BY DeviceID DESC
 LIMIT 1;
 END;
 $result = $mysqli->query($query2);

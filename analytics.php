@@ -29,8 +29,6 @@ array_push($browsernames, $row->BrowserName);
 $formatbrowsercount = implode(", ", $browsercount);
 $formatbrowsernames = "'" . implode ( "', '", $browsernames) . "'";
 
-
-
 $content = <<<END
 <div class="chart-container" style="position:absolute; height:300px; width:400px; top:50px; right:350px;">
 <p>Most common browser</p>
@@ -110,7 +108,7 @@ $all_users = $mysqli->query($sql);
 <h1>Select User</h1>
 <form method="post" action="analytics.php">
 <label for="user" style="display: block; ">Choose User</label>
-<select name="user" class="form-select" style="width: 5%; display: inline; ">
+<select name="user" class="form-select" style="width: 7%; display: inline; ">
         <?php 
         while ($user = mysqli_fetch_array(
             $all_users,MYSQLI_ASSOC)):; 
