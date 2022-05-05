@@ -1,6 +1,7 @@
 <?php
 $title = "Login";
-require_once("template.php");
+require_once("configDB.php");
+require_once("sessionsetup.php");
 if (isset($_POST['username']) and isset($_POST['password'])) {
 $name = $mysqli->real_escape_string($_POST['username']);
 $pwd = $mysqli->real_escape_string($_POST['password']);

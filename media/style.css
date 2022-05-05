@@ -5,3 +5,7 @@
 .Off {
     background-color: red;
 }
+html, 
+body {
+    height: 100% !important;
+}

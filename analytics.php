@@ -36,9 +36,6 @@ $content = <<<END
 <p>Most common browser</p>
 <canvas id="myChart"></canvas>
 </div>
-<div id="iptable">
-
-</div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   const data = {
@@ -76,9 +73,8 @@ $content = <<<END
 END;
 echo $navigation;
 echo $content;
-
-echo '<table border=1px;>';
-echo "<tr border=1px;>";
+echo '<table class="table table-dark table-hover w-auto"';
+echo "<tr>";
 echo "<td>IP Adress </td>";
 echo "<td>Number of occurrences </td>";
 echo "</tr>";
@@ -100,20 +96,21 @@ $result2 = $mysqli->query($query2);
 $temp = mysqli_fetch_array($result2);
 $count = $temp['COUNT(*)'];
 
-echo "<tr border=1px;>";
-echo "<td> {$row->IPAdress} </td>";
+echo "<tr>";
+echo "<td style='width: 15%'> {$row->IPAdress} </td>";
 echo "<td> {$count} </td>";
 echo "</tr>";
 }
 }
+
 $sql = "SELECT * FROM project_User";
 $all_users = $mysqli->query($sql);
 ?>
 <body>
 <h1>Select User</h1>
 <form method="post" action="analytics.php">
-<label for="user">Choose User</label>
-<select name="user">
+<label for="user" style="display: block; ">Choose User</label>
+<select name="user" class="form-select" style="width: 5%; display: inline; ">
         <?php 
         while ($user = mysqli_fetch_array(
             $all_users,MYSQLI_ASSOC)):; 
@@ -126,8 +123,8 @@ $all_users = $mysqli->query($sql);
         <?php 
         endwhile; 
         ?>
-<input type="submit" value="Select User">
-<input type="reset" value="reset">
+<input type="submit" value="Select User" class="btn btn-primary">
+<input type="reset" value="reset" class="btn btn-primary">
 </form>
 <script>
 function SetTable(user, counter = 1){
@@ -156,8 +153,10 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
         end = false;
         let array = JSON.parse(response);
         let table = document.createElement('table');
+        table.className = "";
         table.id = "userhistory";
         let tr = document.createElement('tr');
+        tr.style.width= "15%";
         let td1 = document.createElement('td');
         let td2 = document.createElement('td');
         let td3 = document.createElement('td');
@@ -226,7 +225,6 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
     })
     
 }
-
 </script>
 </body>
 

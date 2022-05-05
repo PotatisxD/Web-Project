@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+body{padding-left: 280px}
+</style>
 <meta charset="utf-8">
 <link rel="stylesheet" href="media/style.css">
 <link rel="stylesheet" href="sidebars.css">
@@ -9,19 +12,21 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
 <title><?php if(isset($title)){echo $title;} else {echo "Smart Home";} ?></title></head>
 
 <?php
-session_name("s" . ip2long($_SERVER["REMOTE_ADDR"]));
-session_start();
+require_once("sessionsetup.php");
 include("log.php");
 require_once("configDB.php");
 $current_Page = basename($_SERVER['PHP_SELF'], ".php");
+$offset = <<<END
+
+END;
 $navigation = <<<END
-<nav>
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh; float: left;">
+<nav navbar-static-left>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position: fixed; margin-left:-280px; width: 280px; height: 100vh; float: left;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <span class="fs-4">Sidebar</span>
     </a>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav nav-pills flex-column mb-auto navbar-nav">
         <li class="nav-item">
             <a href="home.php" class="nav-link text-white" aria-current="page"  id="home">
                 <svg class="bi me-2" width="16" height="16" >
@@ -64,8 +69,8 @@ $result = $mysqli->query($query);
 if (mysqli_num_rows($result) != 0)
 {
     $navigation = <<<END
-    <nav>
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh; float: left;">
+    <nav class="">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position: fixed; margin-left:-280px; width: 280px; height: 100vh; float: left;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-4">Sidebar</span>
         </a>
@@ -147,6 +152,5 @@ END;
 }
 }
 LogUserInfo();
- $navigation .= '</nav>';
-
+$navigation .= '</nav>';
 ?>
