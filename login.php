@@ -1,10 +1,13 @@
 <?php
+// Ted.R Code
 $title = "Login";
 require_once("configDB.php");
 require_once("sessionsetup.php");
 if (isset($_POST['username']) and isset($_POST['password'])) {
+//Validates the strings will be safe to place in a query
 $name = $mysqli->real_escape_string($_POST['username']);
 $pwd = $mysqli->real_escape_string($_POST['password']);
+//query to check if user input matches the database
 $query = <<<END
 SELECT UserName, Password, UserID FROM project_User
 WHERE UserName = '{$name}'

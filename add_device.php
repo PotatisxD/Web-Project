@@ -1,11 +1,15 @@
+
 <?php
+// Ted.R Code
 include_once('template.php');
 echo $navigation;
 if (isset($_POST['name'])) {
 
+//Validates the strings will be safe to place in a query
 $name = $mysqli->real_escape_string($_POST['name']);
 $type = $mysqli->real_escape_string($_POST['type']);
 $room = $mysqli->real_escape_string($_POST['room']);
+//query to insert into database
 $query = <<<END
 INSERT INTO project_Device(DeviceName,DeviceTypeID,RoomID)
 VALUES('{$name}','{$type}','{$room}')
@@ -27,6 +31,7 @@ $mysqli->query($query3);
 echo 'Product added to the database!';
 }
 
+//queries against the database for room and devicetype info
 $sql = "SELECT * FROM project_Room";
 $all_rooms = $mysqli->query($sql);
 $sqltwo = "SELECT * FROM project_DeviceType";
@@ -38,10 +43,12 @@ $all_types = $mysqli->query($sqltwo);
 <input type="text" name="name" placeholder="Device name"><br>
 <label for="type">Choose device type:</label>
 <select name="type">
+        <!--Fetches the result from query above into an associative array-->
         <?php 
         while ($type = mysqli_fetch_array(
             $all_types,MYSQLI_ASSOC)):; 
         ?>
+        <!--echos the content from DeviceType in the database into a drop-down list -->
         <option value="<?php echo $type["DeviceTypeID"];
         ?>">
         <?php echo $type["DeviceType"];
@@ -53,10 +60,12 @@ $all_types = $mysqli->query($sqltwo);
 </select><br>
 <label for="room">Choose which room:</label>
 <select name="room">
+        <!--Fetches the result from query above into an associative array-->
         <?php 
         while ($room = mysqli_fetch_array(
             $all_rooms,MYSQLI_ASSOC)):; 
         ?>
+        <!--echos the content from DeviceType in the database into a drop-down list -->
         <option value="<?php echo $room["RoomID"];
         ?>">
         <?php echo $room["Room"];
