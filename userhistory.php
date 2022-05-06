@@ -1,5 +1,5 @@
-<!--Felix.C Code-->
 <?php
+// Felix.C Code
 include("configDB.php");
 $userhistory = array();
 $newuserhistory = array();

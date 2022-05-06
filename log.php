@@ -1,5 +1,5 @@
-<!--Felix.C Code-->
 <?php
+// Felix.C Code
 function LogUserInfo() {
 $host = "localhost";
 $user = "felcar21"; 

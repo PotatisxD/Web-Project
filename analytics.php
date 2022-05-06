@@ -1,5 +1,5 @@
-<!--Felix.C Code-->
 <?php
+// Felix.C Code
 $title = "Analytics";
 require_once('template.php');
 function createIpTable(){
@@ -149,6 +149,7 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
       {
 
       }
+      console.log(response);
         end = false;
         let array = JSON.parse(response);
         let table = document.createElement('table');
