@@ -40,6 +40,6 @@ echo $navigation;
 <input type="submit" value="Add Admin">
 <input type="reset" value="reset">
 </form>
-    </body>
+</body>
 
     
