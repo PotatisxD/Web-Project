@@ -1,5 +1,5 @@
-<!--Felix.C Code-->
 <?php
+// Felix.C Code
 require_once("configDB.php");
 $deviceid = $_GET['DeviceID'];
 $userid = $_GET["UserID"];

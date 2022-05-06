@@ -1,5 +1,5 @@
-<!--Felix.C Code-->
 <?php
+// Felix.C Code
 $host = "localhost";
 $user = "felcar21"; 
 $pwd = "AmsOzPBsKR";
