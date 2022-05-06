@@ -1,3 +1,4 @@
+<!--Felix.C Code-->
 <?php
 $title = "Analytics";
 require_once('template.php');
@@ -95,7 +96,7 @@ $temp = mysqli_fetch_array($result2);
 $count = $temp['COUNT(*)'];
 
 echo "<tr>";
-echo "<td style='width: 15%'> {$row->IPAdress} </td>";
+echo "<td> {$row->IPAdress} </td>";
 echo "<td> {$count} </td>";
 echo "</tr>";
 }
@@ -151,10 +152,10 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
         end = false;
         let array = JSON.parse(response);
         let table = document.createElement('table');
-        table.className = "";
+        table.className = "table table-dark table-hover w-auto";
         table.id = "userhistory";
+        let tbody = document.createElement('tbody')
         let tr = document.createElement('tr');
-        tr.style.width= "15%";
         let td1 = document.createElement('td');
         let td2 = document.createElement('td');
         let td3 = document.createElement('td');
@@ -167,7 +168,7 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
-        table.appendChild(tr);
+        tbody.appendChild(tr);
         for (let i = 0; i<10; i++) {
           if (i < array.length) {
             let tr = document.createElement('tr');
@@ -183,7 +184,9 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
           tr.appendChild(td1);
           tr.appendChild(td2);
           tr.appendChild(td3);
-          table.appendChild(tr);
+          tbody.appendChild(tr);
+          table.appendChild(tbody);
+          
           }
           else
           {
