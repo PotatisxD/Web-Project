@@ -7,6 +7,7 @@ function createIpTable(){
 }
 $browsercount = array();
 $browsernames = array();
+// Gets all the browsers and then counts the number of times they appear in the logs table and adds them to 2 separate arrays
 $query1 = <<<END
 SELECT *
 FROM project_Browser
@@ -27,9 +28,11 @@ array_push($browsercount, $temp['COUNT(*)']);
 array_push($browsernames, $row->BrowserName);
 }
 }
+//Formts the arrays correctly to work with the javascript
 $formatbrowsercount = implode(", ", $browsercount);
 $formatbrowsernames = "'" . implode ( "', '", $browsernames) . "'";
 
+// all the html code used to create a pie chart, I used the basic template at https://www.chartjs.org/docs/latest/getting-started/
 $content = <<<END
 <div class="chart-container" style="position:absolute; height:300px; width:400px; top:50px; right:350px;">
 <p>Most common browser</p>
@@ -70,14 +73,18 @@ $content = <<<END
   );
 </script>
 END;
+// echoes the navbar and the piechart
 echo $navigation;
 echo $content;
+
+// Creates the table and the first row of content of the IP table.
 echo '<table class="table table-dark table-hover w-auto"';
 echo "<tr>";
 echo "<td>IP Adress </td>";
 echo "<td>Number of occurrences </td>";
 echo "</tr>";
 
+// Selects all the distinct IP adresses in the logs the loops through each one and queires the number of times they appear in the logs.
 $query1 = <<<END
 SELECT DISTINCT project_Log.IPAdress
 FROM project_Log
@@ -95,13 +102,14 @@ $result2 = $mysqli->query($query2);
 $temp = mysqli_fetch_array($result2);
 $count = $temp['COUNT(*)'];
 
+// Echoes a new row with the IP adress and the number of times it appears in the logs.
 echo "<tr>";
 echo "<td> {$row->IPAdress} </td>";
 echo "<td> {$count} </td>";
 echo "</tr>";
 }
 }
-
+// html code for selecting which user to display the history for.
 $sql = "SELECT * FROM project_User";
 $all_users = $mysqli->query($sql);
 ?>
@@ -125,9 +133,12 @@ $all_users = $mysqli->query($sql);
 <input type="submit" value="Select User" class="btn btn-primary">
 <input type="reset" value="reset" class="btn btn-primary">
 </form>
-<script>
-function SetTable(user, counter = 1){
 
+<!-- Script for fetching 10 logs from the userhistory.php file-->
+<script>
+// Function that takes what user and what the current history page is as counter 
+function SetTable(user, counter = 1){
+//creates a fetch with the user and counter
 let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Page: counter}), {
     method: 'get',
 }).then(function(response) {
@@ -137,7 +148,14 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
         throw new Error(response.statusText)
     })
     .then(function(response) {
-      try {
+      // Parses the json to array
+      let array = JSON.parse(response);
+      // bool used to check if they are no more pages to browse through
+      end = false;
+      // tries to remove the old table and buttons if the array length is bigger than 0. This is because if the last page is exactly 10 long it will make a unnecessary call to fetch a empty set of logs. 
+      if(array.length > 0)
+      {
+        try {
         const child = document.getElementById("userhistory");
         child.remove();
         const child2 = document.getElementById("backbutton");
@@ -149,9 +167,11 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
       {
 
       }
-      console.log(response);
-        end = false;
-        let array = JSON.parse(response);
+      }
+      else{
+        end = true;
+      }
+        // Creates the first row of the table
         let table = document.createElement('table');
         table.className = "table table-dark table-hover w-auto";
         table.id = "userhistory";
@@ -170,12 +190,14 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
         tr.appendChild(td2);
         tr.appendChild(td3);
         tbody.appendChild(tr);
+        // A for loop that creates a row for each log entry to a maxium of 10 and if the for loop tries to create more than what the array contains the end bool becomes true.
         for (let i = 0; i<10; i++) {
           if (i < array.length) {
             let tr = document.createElement('tr');
           let td1 = document.createElement('td');
           let td2 = document.createElement('td');
           let td3 = document.createElement('td');
+          // Uses the i variable to get what entry in the 2 dim array and then gets the 3 different types of data and then appends it to the table.
           let text1 = document.createTextNode(array[i][0]);
           let text2 = document.createTextNode(array[i][1]);
           let text3 = document.createTextNode(array[i][2]);
@@ -196,10 +218,13 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
           
         
         }
+        //Appends the table to the body
         document.body.appendChild(table);
+        // Creates the backbutton that goes backwards in the history logs 
         let backbutton = document.createElement('button');
         backbutton.innerHTML  = "Back";
         backbutton.id= "backbutton";
+        // Only calls for a new fetch if we are not currently on the first page counter
         backbutton.onclick = function(){
           if(counter > 1)
           {
@@ -208,9 +233,11 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
           }
         
         };
+        // Creates the forward that goes forwards in the history logs 
         let forwardbutton = document.createElement('button');
         forwardbutton.innerHTML  = "Forward";
         forwardbutton.id= "forwardbutton";
+        // Only calls for a new fetch if the end bool is not true
         forwardbutton.onclick = function(){
           if(end != true)
           {
@@ -220,6 +247,7 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
           
         
         };
+        // Appends the two buttons
         document.body.appendChild(backbutton);
         document.body.appendChild(forwardbutton);
         console.log(counter);
@@ -231,6 +259,7 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
 </body>
 
 <?php
+// Checks if the select form as been completed and calls the SetTable function for that user using javascript.
 if (isset($_POST['user'])) {
 $user = $mysqli->real_escape_string($_POST['user']);
 $content = <<<END

@@ -1,5 +1,6 @@
 <?php
 // Felix.C Code
+// Configs the database connection.
 $host = "localhost";
 $user = "felcar21"; 
 $pwd = "AmsOzPBsKR";
