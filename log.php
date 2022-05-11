@@ -48,8 +48,8 @@ function get_browser_name($user_agent)
     return 'Other';
 }
 $current_Browser = get_browser_name($_SERVER['HTTP_USER_AGENT']);
-//Creates a new Browser in database if the current one does not exist
 
+//Creates a new Browser in database if the current one does not exist
 $query = <<<END
 SELECT * 
 FROM project_Browser
@@ -84,10 +84,9 @@ VALUES (NULL, '{$current_IP}', NULL, {$current_PageID}, {$current_BrowserID})
 END;
 $mysqli->query($query);
 
-
+// Gets the latest Log and associatess it with the current user if someone is logged in.
 if (isset($_SESSION['userId']))
 {
-// Gets the latest Log
 $query = <<<END
 SELECT project_Log.LogID FROM project_Log
 ORDER BY project_Log.LogID DESC
@@ -103,7 +102,5 @@ INSERT INTO project_UserLog VALUES ('{$userID}', '{$current_LogID}')
 END;
 $mysqli->query($query);
 }
-
-
 }
 ?>
