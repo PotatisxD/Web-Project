@@ -19,9 +19,6 @@ $navigation = <<<END
                             <li class="nav-item">
                                 <a class="nav-link active" href="index.php">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="about.php">About</a>
-                            </li>
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item dyncont">				

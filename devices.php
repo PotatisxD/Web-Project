@@ -1,10 +1,12 @@
 <?php
+// Felix.C Code
 $title = "Devices";
 require_once('template.php');
 if(isset($_SESSION['username']))
 {
     $current_UserID = $_SESSION['userId'];
 }
+// Query to select all Devices and their type and room
 $content = '<h1>Devices</h1>';
 $query = <<<END
 SELECT project_Device.DeviceName, project_Room.Room, project_DeviceType.DeviceType, project_Device.DeviceID
