@@ -14,6 +14,7 @@ WHERE UserName = '{$name}'
 AND Password = '{$pwd}'
 END;
 $result = $mysqli->query($query);
+//if credentials are corrects a session starts with username and userID
 if ($result->num_rows > 0) {
 $row = $result->fetch_object();
 $_SESSION["username"] = $row->UserName;
