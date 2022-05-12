@@ -1,6 +1,8 @@
+<!--Created by both Kenny and Felix-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--Adds some padding to the body since every page that uses the template will have the navbar-->
 <style>
 body{padding-left: 280px}
 </style>
@@ -9,16 +11,15 @@ body{padding-left: 280px}
 <link rel="stylesheet" href="sidebars.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!--Changes the title depending on what page is currently used-->
 <title><?php if(isset($title)){echo $title;} else {echo "Smart Home";} ?></title></head>
-
 <?php
 require_once("sessionsetup.php");
 include("log.php");
 require_once("configDB.php");
+// Gets page name
 $current_Page = basename($_SERVER['PHP_SELF'], ".php");
-$offset = <<<END
-
-END;
+// Navbar created by Kenny from the bootstrap template https://getbootstrap.com/docs/5.1/examples/sidebars/ , Felix.C only added the last script as well as this part: position: fixed; margin-left:-280px;. Used by End users
 $navigation = <<<END
 <nav navbar-static-left>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position: fixed; margin-left:-280px; width: 280px; height: 100vh; float: left;">
@@ -56,6 +57,7 @@ $navigation = <<<END
     document.getElementById("{$current_Page}").className += " active";
     </script>
 END;
+// Felix.C code, Checks if someone is logged in then checks if that user is admin.
 if (isset($_SESSION['userId']))
 {
 $current_UserID = $_SESSION['userId'];
@@ -68,6 +70,7 @@ END;
 $result = $mysqli->query($query);
 if (mysqli_num_rows($result) != 0)
 {
+    // Navbar created by Kenny from the bootstrap template https://getbootstrap.com/docs/5.1/examples/sidebars/, Felix.C only added the last script as well as this part: position: fixed; margin-left:-280px;. Used by Admin Users
     $navigation = <<<END
     <nav class="">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position: fixed; margin-left:-280px; width: 280px; height: 100vh; float: left;">
@@ -137,6 +140,7 @@ if (mysqli_num_rows($result) != 0)
         document.getElementById("{$current_Page}").className += " active";
         </script>
 END;
+// Kenny code, adds the option to register a new user and displays what person is logged in.
 $navigation .= <<<END
 <a href="register.php">Reigster new user</a>
 Logged in as {$current_User}
@@ -151,6 +155,7 @@ Logged in as {$current_User}
 END;
 }
 }
+// Felix.C code, Logs the user info
 LogUserInfo();
 $navigation .= '</nav>';
 ?>
