@@ -33,9 +33,10 @@ $content .= <<<END
 {$row->DeviceName} |
 {$row->DeviceType} |
 {$row->Room}
-// creates a button that changes the status of a device using the SetStatus function.
+
 <button class = "{$row2->Value}" id="button{$row->DeviceID}" onclick="SetStatus({$row->DeviceID})">{$row2->Value}</button><br>
 END;
+// the last line in content creates a button that changes the status of a device using the SetStatus function.
 
 // Checks if the current user is an admin and adds the the adds the edit and remove link for each device.
 if (isset($_SESSION['userId']))

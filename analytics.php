@@ -78,6 +78,7 @@ echo $navigation;
 echo $content;
 
 // Creates the table and the first row of content of the IP table.
+echo 'IP Adresses';
 echo '<table class="table table-dark table-hover w-auto"';
 echo "<tr>";
 echo "<td>IP Adress </td>";
@@ -113,8 +114,7 @@ echo "</tr>";
 $sql = "SELECT * FROM project_User";
 $all_users = $mysqli->query($sql);
 ?>
-<body>
-<h1>Select User</h1>
+<h1>Analytics</h1>
 <form method="post" action="analytics.php">
 <label for="user" style="display: block; ">Choose User</label>
 <select name="user" class="form-select" style="width: 7%; display: inline; ">
@@ -175,6 +175,10 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
         let table = document.createElement('table');
         table.className = "table table-dark table-hover w-auto";
         table.id = "userhistory";
+        let p = document.createElement('p');
+        let ptext = document.createTextNode('User History');
+        p.appendChild(ptext);
+        document.body.appendChild(p);
         let tbody = document.createElement('tbody')
         let tr = document.createElement('tr');
         let td1 = document.createElement('td');
@@ -256,8 +260,6 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
     
 }
 </script>
-</body>
-
 <?php
 // Checks if the select form as been completed and calls the SetTable function for that user using javascript.
 if (isset($_POST['user'])) {

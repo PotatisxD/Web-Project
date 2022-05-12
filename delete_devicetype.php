@@ -1,4 +1,5 @@
 <?php
+// Felix Code, deletes the given DeviceType
 include_once('template.php');
 if (isset($_GET['DeviceTypeID']) and isset($_SESSION['userId'])) {
 $query = <<<END
