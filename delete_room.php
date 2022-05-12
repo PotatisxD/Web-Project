@@ -1,5 +1,5 @@
 <?php
-// Felix Code, deletes the given room
+// Felix Code, deletes the given room, same as delete_device but changed names so credit goes to Ted
 include_once('template.php');
 // if the GET variable and session is set, a query will run
 if (isset($_GET['RoomID']) and isset($_SESSION['userId'])) {
