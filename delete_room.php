@@ -1,4 +1,5 @@
 <?php
+// Felix Code, deletes the given room
 include_once('template.php');
 // if the GET variable and session is set, a query will run
 if (isset($_GET['RoomID']) and isset($_SESSION['userId'])) {
@@ -10,6 +11,5 @@ END;
 $mysqli->query($query);
 header('Location:rooms.php');
 }
-
 echo $navigation;
 ?>
