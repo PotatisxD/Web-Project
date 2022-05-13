@@ -10,7 +10,8 @@ END;
  if ($mysqli->query($query) !== TRUE) {
  die("Could not query database" . $mysqli->errno . " : " . $mysqli->error);
  header('Location:index.php');
- }
+}
+header('Location:users.php');
 }
 $content = <<<END
 <h1>Reigster New User</h1>

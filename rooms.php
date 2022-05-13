@@ -15,7 +15,7 @@ $content .= <<<END
 {$row->Room}<br>
 END;
 $content .= <<<END
-    <a href="delete_room.php?RoomID={$row->RoomID}" onclick="return confirm('Are you sure you want to remove this room?This will delete all devices in this room as well.')">
+    <a href="delete_room.php?RoomID={$row->RoomID}" onclick="return confirm('Are you sure you want to remove this room? This will delete all devices in this room as well.')">
     Remove room</a> |
     <a href="edit_room.php?RoomID={$row->RoomID}">Edit room</a><br>
     <br>

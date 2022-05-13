@@ -156,12 +156,14 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
       if(array.length > 0)
       {
         try {
-        const child = document.getElementById("userhistory");
+        const child = document.getElementById("userhistoryp");
         child.remove();
-        const child2 = document.getElementById("backbutton");
+        const child2 = document.getElementById("userhistory");
         child2.remove();
-        const child3 = document.getElementById("forwardbutton");
+        const child3 = document.getElementById("backbutton");
         child3.remove();
+        const child4 = document.getElementById("forwardbutton");
+        child4.remove();
       }
       catch
       {
@@ -176,6 +178,7 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
         table.className = "table table-dark table-hover w-auto";
         table.id = "userhistory";
         let p = document.createElement('p');
+        p.id = "userhistoryp";
         let ptext = document.createTextNode('User History');
         p.appendChild(ptext);
         document.body.appendChild(p);
