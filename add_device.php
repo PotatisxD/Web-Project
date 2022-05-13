@@ -40,7 +40,7 @@ $all_types = $mysqli->query($sqltwo);
 <body>
 <h1>Add device</h1>
 <form method="post" action="add_device.php">
-<input type="text" name="name" placeholder="Device name"><br>
+<input type="text" name="name" placeholder="Device name" required><br>
 <label for="type">Choose device type:</label>
 <select name="type">
         <!--Fetches the result from query above into an associative array-->
