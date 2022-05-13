@@ -21,8 +21,8 @@ $row = $res->fetch_object();
 $content = <<<END
 <h1>Edit User</h1>
 <form method="post" action="edit_user.php?id={$row->UserID}">
-<input type="text" name="name" value="{$row->UserName}"><br>
-<input type="text" name="password" value="{$row->Password}"><br>
+<input type="text" name="name" value="{$row->UserName}" required><br>
+<input type="text" name="password" value="{$row->Password}" required><br>
 
 <input type="submit" value="save">
 </form>

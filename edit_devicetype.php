@@ -21,7 +21,7 @@ echo $navigation;
 ?>
 <!--Creates a form to change name of devicetype-->
 <body>
-<h1>Edit Room</h1>
+<h1>Edit DeviceType</h1>
 <form method="post" action="edit_devicetype.php?DeviceTypeID=<?php echo $dname["DeviceTypeID"]?>">
 <input type="text" name="name" value="<?php echo $dname["DeviceType"];?>" required><br>
 <input type="submit" value="Save changes">
