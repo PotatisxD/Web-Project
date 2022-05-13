@@ -17,7 +17,7 @@ echo 'DeviceType added to the database!';
 <!--Form to input the name for the new devicetype-->
 <h1>Add DeviceType</h1>
 <form method="post" action="add_devicetype.php">
-<input type="text" name="name" placeholder="DeviceType name"><br>
+<input type="text" name="name" placeholder="DeviceType name" required><br>
 <input type="submit" value="Add DeviceType">
 <input type="reset" value="reset">
 </form>

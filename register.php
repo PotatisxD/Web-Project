@@ -16,8 +16,8 @@ header('Location:users.php');
 $content = <<<END
 <h1>Reigster New User</h1>
 <form method="post" action="register.php">
-<input type = "text" name="username" placeholder="username" ><br>
-<input type="password" name="password" placeholder="password"><br>
+<input type = "text" name="username" placeholder="username" required><br>
+<input type="password" name="password" placeholder="password" required><br>
 <input type="submit" value="Register">
 <input type="Reset" value="reset">
 </form>

@@ -17,7 +17,7 @@ echo 'Room added to the database!';
 <body>
 <h1>Add Room</h1>
 <form method="post" action="add_room.php">
-<input type="text" name="name" placeholder="Room name"><br>
+<input type="text" name="name" placeholder="Room name" required> <br>
 <input type="submit" value="Add Room">
 <input type="reset" value="reset">
 </form>
