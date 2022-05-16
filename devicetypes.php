@@ -2,7 +2,7 @@
 $title = "DeviceType";
 require_once('template.php');
 $content = '<h1>DeviceTypes</h1>';
-// selects all devicetypes
+// Selects all devicetypes
 $query = <<<END
 SELECT DeviceType, DeviceTypeID
 FROM project_DeviceType

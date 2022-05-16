@@ -34,7 +34,7 @@ $result = $mysqli->query($query);
 $temp = $result->fetch_object();
 $current_PageID = $temp->PageID;
 
-//Gets current Browser
+//Gets current Browser, code from: https://www.php.net/manual/en/function.get-browser.php#119332
 
 function get_browser_name($user_agent)
 {
