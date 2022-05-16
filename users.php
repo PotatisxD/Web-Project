@@ -10,7 +10,7 @@ FROM project_User
 
 END;
 $res = $mysqli->query($query);
-// Loops through all users and displays their UserName, Password, and UserID. Also adds the options to edit and/or remove the users. Creates hyperlinks for desc, remove and edit. Changes depending on user role.
+// Loops through all users and displays their UserName, Password, and UserID. Also adds the options to edit and/or remove the users. Creates hyperlinks for desc, remove and edit (Changes depending on logged in/logged off user).
 if ($res->num_rows > 0) {
 while ($row = $res->fetch_object()) {
 $content .= <<<END

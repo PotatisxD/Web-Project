@@ -16,7 +16,7 @@ END;
 }
 header('Location:users.php');
 }
-// Form for registering/adding new user, with validiation
+// Form for registering/adding new user to database, with validiation
 $content = <<<END
 <h1>Reigster New User</h1>
 <form method="post" action="register.php">
