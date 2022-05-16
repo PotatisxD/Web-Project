@@ -78,7 +78,6 @@ echo $navigation;
 echo $content;
 
 // Creates the table and the first row of content of the IP table.
-echo 'IP Adresses';
 echo '<table class="table table-dark table-hover w-auto"';
 echo "<tr>";
 echo "<td>IP Adress </td>";

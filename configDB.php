@@ -1,5 +1,5 @@
 <?php
-// Felix.C Code
+// Felix.C Code, inspiration from the php lecture.
 // Configs the database connection.
 $host = "localhost";
 $user = "felcar21"; 

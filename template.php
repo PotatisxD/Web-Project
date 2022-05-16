@@ -1,4 +1,4 @@
-<!--Created by both Kenny and Felix-->
+<!--Created by both Kenny.L (Quang) and Felix-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@ include("log.php");
 require_once("configDB.php");
 // Gets page name
 $current_Page = basename($_SERVER['PHP_SELF'], ".php");
-// Navbar created by Kenny from the bootstrap template https://getbootstrap.com/docs/5.1/examples/sidebars/ , Felix.C only added the last script as well as this part: position: fixed; margin-left:-280px;. Used by End users
+// Navbar created by Kenny.L (Quang) from the bootstrap template https://getbootstrap.com/docs/5.1/examples/sidebars/ , Felix.C only added the last script as well as this part: position: fixed; margin-left:-280px;. Used by End users
 $navigation = <<<END
 <nav navbar-static-left>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position: fixed; margin-left:-280px; width: 280px; height: 100vh; float: left;">

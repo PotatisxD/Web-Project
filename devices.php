@@ -1,5 +1,5 @@
 <?php
-// Felix.C Code
+// Felix.C Code, inspiration from lab 7 (products.php)
 $title = "Devices";
 require_once('template.php');
 if(isset($_SESSION['username']))

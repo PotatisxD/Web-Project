@@ -1,4 +1,5 @@
 <?php
+// Felix.C code, inspiration from lab 7 (products.php)
 $title = "Rooms";
 require_once('template.php');
 $content = '<h1>Rooms</h1>';
