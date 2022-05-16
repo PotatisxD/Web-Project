@@ -4,6 +4,8 @@ include_once('template.php');
 $content = 'Edit USER';
  if (isset($_GET['id'])) {
  if (isset($_POST['name'])) {
+$name = $mysqli->real_escape_string($_POST['name']);
+$pwd = $mysqli->real_escape_string($_POST['password']);
  // Updates using UPDATE SQL statement.
 $query = <<<END
 UPDATE project_User
