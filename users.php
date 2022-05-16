@@ -17,8 +17,7 @@ $content .= <<<END
 {$row->UserName} |
 {$row->Password} |
 {$row->UserID}<br>
-<a href="user_details.php?id={$row->UserID}">User Description</a>
-<br>
+<a href="user_details.php?id={$row->UserID}">User Description</a> 
 END;
 // Adds hyperlinks if logged in
 if (isset($_SESSION['userId'])){

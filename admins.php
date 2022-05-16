@@ -19,7 +19,6 @@ END;
 if (isset($_SESSION['userId'])){
 $content .= <<<END
 | <a href="user_details.php?id={$row->UserID}">User Description of UserID: {$row->UserID} </a> |
-<br>
 | <a href="delete_admin.php?id={$row->UserID}" onclick="return confirm('Are you sure?')">
 Remove Administrative rights</a> |
 <br>
