@@ -136,7 +136,7 @@ $all_users = $mysqli->query($sql);
 
 <!-- Script for fetching 10 logs from the userhistory.php file-->
 <script>
-// Function that takes what user and what the current history page is as counter 
+// Function that takes what user and what the current history page is as counter, insparation from: https://stackoverflow.com/questions/39414008/fetch-api-get-data-from-php-file 
 function SetTable(user, counter = 1){
 //creates a fetch with the user and counter
 let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Page: counter}), {
