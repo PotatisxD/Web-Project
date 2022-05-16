@@ -13,6 +13,7 @@ SET UserName = '{$_POST['name']}', Password= '{$_POST['password']}'
 WHERE UserID = '{$_GET['id']}'
 END;
 $mysqli->query($query);
+header('Location:users.php');
 }
 // Retrieves data from project_User where UserID = '{$_GET['id']}'
  $query = <<<END
