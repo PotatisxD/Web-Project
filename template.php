@@ -70,7 +70,7 @@ END;
 $result = $mysqli->query($query);
 if (mysqli_num_rows($result) != 0)
 {
-    // Navbar created by Kenny.L from the bootstrap template https://getbootstrap.com/docs/5.1/examples/sidebars/, Felix.C only added the last script as well as this part: position: fixed; margin-left:-280px;. Used by Admin Users
+    // Navbar created by Kenny.L (Quang) from the bootstrap template https://getbootstrap.com/docs/5.1/examples/sidebars/, Felix.C only added the last script as well as this part: position: fixed; margin-left:-280px;. Used by Admin Users
     $navigation = <<<END
     <nav class="">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position: fixed; margin-left:-280px; width: 280px; height: 100vh; float: left;">
@@ -140,7 +140,7 @@ if (mysqli_num_rows($result) != 0)
         document.getElementById("{$current_Page}").className += " active";
         </script>
 END;
-// Kenny. L code, adds the option to register a new user and displays what person is logged in.
+// Kenny. L (Quang) code, adds the option to register a new user and displays what person is logged in.
 $navigation .= <<<END
 <a class="btn btn-outline-primary" href="register.php">Reigster new user</a>
 <div style="background-color:green"> Logged in as {$current_User} </div>

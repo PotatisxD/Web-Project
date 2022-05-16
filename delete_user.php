@@ -1,5 +1,5 @@
 <?php
-// Kenny.L Code, inspiration from lab 7 (delete_products.php).
+// Kenny.L (Quang) Code, inspiration from lab 7 (delete_products.php).
 // Checks if the user is a logged in user/admin
 if (isset($_GET['id']) and isset($_SESSION['userId'])) {
 // Deletes using DELETE SQL statement.

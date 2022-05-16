@@ -1,5 +1,5 @@
 <?php
-// Kenny.L Code, basically the same as delete_user.php in the same project, but with minor changes to query and code.
+// Kenny.L (Quang) Code, basically the same as delete_user.php in the same project, but with minor changes to query and code.
 include_once('template.php');
 $query = <<<END
 SELECT * 

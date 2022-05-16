@@ -1,5 +1,5 @@
 <?php
-// Kenny.L Code, inspiration from lab 7 (register.php)
+// Kenny.L (Quang) Code, inspiration from lab 7 (register.php)
 include('template.php');
 if (isset($_POST['username']) and isset($_POST['password'])) {
 $name = $mysqli->real_escape_string($_POST['username']);

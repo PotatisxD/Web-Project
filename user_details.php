@@ -1,5 +1,5 @@
 <?php
-// Kenny.L Code, inspiration from lab 7 (product_details.php). Displays specific User details depending on what UserID gets queried through the GET method.
+// Kenny.L (Quang) Code, inspiration from lab 7 (product_details.php). Displays specific User details depending on what UserID gets queried through the GET method.
 include_once('template.php');
 $content = '<h1>User Details</h1>';
 if (isset($_GET['id'])) {

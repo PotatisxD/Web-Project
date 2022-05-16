@@ -1,5 +1,5 @@
 <?php
-// Kenny.L Code, re-used code from user.php (in the same project) with minor changes to queries and code.
+// Kenny.L (Quang) Code, re-used code from user.php (in the same project) with minor changes to queries and code.
 $title = "Current Admins";
 require_once('template.php');
 $content = '<h1>Current Admins</h1>';

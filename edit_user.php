@@ -1,5 +1,5 @@
 <?php
-// Kenny.L Code, inspiration from lab 7 (edit_product.php).
+// Kenny.L (Quang) Code, inspiration from lab 7 (edit_product.php).
 include_once('template.php');
 $content = 'Edit USER';
  if (isset($_GET['id'])) {

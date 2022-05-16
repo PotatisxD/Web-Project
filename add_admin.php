@@ -1,5 +1,5 @@
 <?php
-// Kenny. L Code, got inspiration from add_device.php in the same project (Ted)
+// Kenny. L (Quang) Code, got inspiration from add_device.php in the same project (Ted)
 $title = "Add Admin";
 include_once('template.php');
 echo $navigation;
