@@ -143,7 +143,7 @@ END;
 // Kenny. L (Quang) code, adds the option to register a new user and displays what person is logged in.
 $navigation .= <<<END
 <a class="btn btn-outline-primary" href="register.php">Reigster new user</a>
-<div style="background-color:green"> Logged in as {$current_User} </div>
+<div style="background-color:green; text-align:center;"> Logged in as {$current_User} </div>
 </div>
 </ul>
 END;
