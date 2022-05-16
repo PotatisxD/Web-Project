@@ -1,5 +1,5 @@
 <?php
-// Felix.C Code but most of is the same as edit_device only swapped names and changed the form. Credit goes to Ted
+// Felix.C Code but most of is the same as edit_device only swapped names and changed the form, inspiration from Ted.
 include_once('template.php');
 // Checks if form has been completed and updates the devicetype and then moves user to devicetype.php
 if (isset($_GET['DeviceTypeID'])) {

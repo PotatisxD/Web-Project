@@ -1,4 +1,3 @@
-
 <?php
 // Ted.R Code
 include_once('template.php');

@@ -1,5 +1,5 @@
 <?php
-// Felix Code, deletes the given DeviceType, same as delete_device but changed names so credit goes to Ted
+// Felix Code, deletes the given DeviceType, same as delete_device but changed names, inspiration from Ted.
 include_once('template.php');
 // if the GET variable and session is set, a query will run
 if (isset($_GET['DeviceTypeID']) and isset($_SESSION['userId'])) {
