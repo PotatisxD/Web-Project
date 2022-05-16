@@ -1,13 +1,16 @@
 <?php
+// Kenny.L Code, re-used code from user.php (in the same project) with minor changes to queries and code.
 $title = "Current Admins";
 require_once('template.php');
 $content = '<h1>Current Admins</h1>';
+// Retrieve data from database
 $query = <<<END
 SELECT *
 FROM project_Admin
 
 END;
 $res = $mysqli->query($query);
+// Loops through all admins and displays their UserID. Also adds hyperlinks for user description and the removal of admin-rights.
 if ($res->num_rows > 0) {
 while ($row = $res->fetch_object()) {
 $content .= <<<END

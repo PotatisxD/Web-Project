@@ -1,8 +1,10 @@
 <?php
+// Kenny.L Code, inspiration from lab 7 (edit_product.php).
 include_once('template.php');
 $content = 'Edit USER';
  if (isset($_GET['id'])) {
  if (isset($_POST['name'])) {
+ // Updates using UPDATE SQL statement.
 $query = <<<END
 UPDATE project_User
 SET UserName = '{$_POST['name']}', Password= '{$_POST['password']}'
@@ -10,6 +12,7 @@ WHERE UserID = '{$_GET['id']}'
 END;
 $mysqli->query($query);
 }
+// Retrieves data from project_User where UserID = '{$_GET['id']}'
  $query = <<<END
 SELECT *
 FROM project_User
@@ -18,6 +21,7 @@ END;
 $res = $mysqli->query($query);
 if ($res->num_rows > 0) {
 $row = $res->fetch_object();
+// Form to update User information (with validation)
 $content = <<<END
 <h1>Edit User</h1>
 <form method="post" action="edit_user.php?id={$row->UserID}">

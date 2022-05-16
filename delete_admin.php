@@ -1,4 +1,5 @@
 <?php
+// Kenny.L Code, basically the same as delete_user.php in the same project, but with minor changes to query and code.
 include_once('template.php');
 $query = <<<END
 SELECT * 
@@ -6,6 +7,7 @@ FROM project_Admin
 END;
 $res = $mysqli->query($query);
 if (isset($_GET['id']) and isset($_SESSION['userId']) and $res->num_rows > 1) {
+// Deletes using DELETE SQL statement. Then returns to the page admins.php afterwards.
 $query = <<<END
 DELETE FROM project_Admin
 WHERE UserID = '{$_GET['id']}'
