@@ -19,7 +19,7 @@ $row = $res->fetch_object();
 if($row->Value == "On")
 {
 $query = <<<END
-INSERT INTO project_PropertyOverTime VALUES (NULL, 1, {$deviceid}, "Off", CURRENT_TIMESTAMP, {$userid})
+INSERT INTO project_DevicePropertyOverTime VALUES (NULL, 1, {$deviceid}, "Off", CURRENT_TIMESTAMP)
 END;
 $mysqli->query($query);
 echo "Off";
@@ -27,11 +27,9 @@ echo "Off";
 else 
 {
 $query = <<<END
-INSERT INTO project_PropertyOverTime VALUES (NULL, 1, {$deviceid}, "On", CURRENT_TIMESTAMP, {$userid})
+INSERT INTO project_DevicePropertyOverTime VALUES (NULL, 1, {$deviceid}, "On", CURRENT_TIMESTAMP)
 END;
 echo "On";
 $mysqli->query($query);
 }
-
-
 ?>

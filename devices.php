@@ -20,8 +20,8 @@ $res = $mysqli->query($query);
 if ($res->num_rows > 0) {
 while ($row = $res->fetch_object()) {
 $query2 = <<<END
-SELECT project_PropertyOverTime.Value
-FROM project_PropertyOverTime
+SELECT project_DevicePropertyOverTime.Value
+FROM project_DevicePropertyOverTime
 WHERE Value="On" AND DeviceID="{$row->DeviceID}" OR Value="Off" AND DeviceID="{$row->DeviceID}"
 ORDER BY TimeStamp DESC
 LIMIT 1;

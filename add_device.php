@@ -14,6 +14,7 @@ INSERT INTO project_Device(DeviceName,DeviceTypeID,RoomID)
 VALUES('{$name}','{$type}','{$room}')
 END;
 $mysqli->query($query);
+// Gets the most recently added device and creates a On/Off property with the default being Off.
 $query2 = <<<END
 SELECT DeviceID 
 FROM project_Device
@@ -24,7 +25,7 @@ $result = $mysqli->query($query2);
 $deviceid = $result->fetch_object();
 $userid = $_SESSION['userId'];
 $query3 = <<<END
-INSERT INTO project_PropertyOverTime VALUES (NULL, 1, {$deviceid->DeviceID}, "Off", CURRENT_TIMESTAMP, {$userid})
+INSERT INTO project_DevicePropertyOverTime VALUES (NULL, 1, {$deviceid->DeviceID}, "Off", CURRENT_TIMESTAMP)
 END;
 $mysqli->query($query3);
 echo 'Product added to the database!';
