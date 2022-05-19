@@ -34,7 +34,7 @@ $formatbrowsernames = "'" . implode ( "', '", $browsernames) . "'";
 
 // all the html code used to create a pie chart, I used the basic template at https://www.chartjs.org/docs/latest/getting-started/
 $content = <<<END
-<div class="chart-container" style="position:absolute; height:300px; width:400px; top:50px; right:350px;">
+<div class="chart-container" style="position:absolute; height:400px; width:500px; top:100px; left:800px;">
 <p>Most common browser</p>
 <canvas id="myChart"></canvas>
 </div>
@@ -75,7 +75,6 @@ $content = <<<END
 END;
 // echoes the navbar and the piechart
 echo $navigation;
-echo $content;
 
 // Creates the table and the first row of content of the IP table.
 echo '<table class="table table-dark table-hover w-auto"';
@@ -263,6 +262,7 @@ let response =  fetch("userhistory.php?" + new URLSearchParams({UserID: user, Pa
 }
 </script>
 <?php
+echo $content;
 // Checks if the select form as been completed and calls the SetTable function for that user using javascript.
 if (isset($_POST['user'])) {
 $user = $mysqli->real_escape_string($_POST['user']);
