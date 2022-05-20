@@ -16,7 +16,7 @@ WHERE UserID = '{$_GET['id']}'
 END;
 $mysqli->query($query);
 }
-
+header('Location:users.php');
 }
 echo $navigation;
 ?>
