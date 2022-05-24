@@ -114,7 +114,7 @@ $all_users = $mysqli->query($sql);
 ?>
 <form method="post" action="analytics.php">
 <label style="display: block; ">Choose User</label>
-<select class="form-select" style="width: 7%; display: inline; ">
+<select name="user" class="form-select" style="width: 7%; display: inline; ">
         <?php 
         while ($user = mysqli_fetch_array(
             $all_users,MYSQLI_ASSOC)):; 
