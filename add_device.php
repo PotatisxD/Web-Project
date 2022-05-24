@@ -37,11 +37,10 @@ $all_rooms = $mysqli->query($sql);
 $sqltwo = "SELECT * FROM project_DeviceType";
 $all_types = $mysqli->query($sqltwo);
 ?>
-<body>
 <h1>Add device</h1>
 <form method="post" action="add_device.php">
 <input type="text" name="name" placeholder="Device name" required><br>
-<label for="type">Choose device type:</label>
+<label>Choose device type:</label>
 <select name="type">
         <!--Fetches the result from query above into an associative array-->
         <?php 
@@ -58,7 +57,7 @@ $all_types = $mysqli->query($sqltwo);
         endwhile; 
         ?>
 </select><br>
-<label for="room">Choose which room:</label>
+<label>Choose which room:</label>
 <select name="room">
         <!--Fetches the result from query above into an associative array-->
         <?php 
@@ -78,4 +77,3 @@ $all_types = $mysqli->query($sqltwo);
 <input type="submit" value="Add device">
 <input type="reset" value="reset">
 </form>
-    </body>

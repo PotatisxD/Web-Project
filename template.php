@@ -77,7 +77,6 @@ if (mysqli_num_rows($result) != 0)
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-4">Sidebar</span>
         </a>
-        <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="home.php" class="nav-link text-white" aria-current="page"  id="home">
@@ -134,8 +133,8 @@ if (mysqli_num_rows($result) != 0)
                 </svg>
                 Logout
             </a>
-        </li>
-        <hr>
+            </li>
+        </ul>
         <script>
         document.getElementById("{$current_Page}").className += " active";
         </script>
@@ -145,7 +144,6 @@ $navigation .= <<<END
 <a class="btn btn-outline-primary" href="register.php">Reigster new user</a>
 <div style="background-color:green; text-align:center;"> Logged in as {$current_User} </div>
 </div>
-</ul>
 END;
 }
 else

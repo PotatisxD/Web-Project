@@ -17,7 +17,6 @@ END;
 $mysqli->query($query);
 echo 'Admin added to the database!';
 }
-
 // Queries against the database for User information
 $sql = "SELECT * FROM project_User";
 $all_ids = $mysqli->query($sql);

@@ -13,7 +13,6 @@ $mysqli->query($query);
 echo 'DeviceType added to the database!';
 }
 ?>
-<body>
 <!--Form to input the name for the new devicetype-->
 <h1>Add DeviceType</h1>
 <form method="post" action="add_devicetype.php">
@@ -21,4 +20,3 @@ echo 'DeviceType added to the database!';
 <input type="submit" value="Add DeviceType">
 <input type="reset" value="reset">
 </form>
-</body>

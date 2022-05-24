@@ -20,10 +20,8 @@ $dname=mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM project_Room WHER
 echo $navigation;
 ?>
 <!--Creates a form to change name of devicetype-->
-<body>
 <h1>Edit Room</h1>
 <form method="post" action="edit_room.php?RoomID=<?php echo $dname["RoomID"]?>">
 <input type="text" name="name" value="<?php echo $dname["Room"];?>" required><br>
 <input type="submit" value="Save changes">
 </form>
-</body>

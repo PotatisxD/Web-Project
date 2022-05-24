@@ -33,9 +33,9 @@ END;
 // Adds buttons connected to admins.php and add_admin.php to be able to list all admins, and also add new admins.
 $content .= <<<END
 <br>
-<a href="admins.php"><button>LIST ALL CURRENT ADMINS</button></a>
+<button onclick='location.href="admins.php"'>LIST ALL CURRENT ADMINS</button>
 <br>
-<a href="add_admin.php"><button>ADD NEW ADMIN</button></a>
+<button onclick='location.href="add_admin.php"'>ADD NEW ADMIN</button>
 END;
 echo $navigation;
 echo $content;

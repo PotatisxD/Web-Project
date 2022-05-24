@@ -2,9 +2,8 @@
 // Felix.C Code
 $title = "Analytics";
 require_once('template.php');
-function createIpTable(){
-
-}
+echo $navigation;
+echo "<h1>Analytics</h1>";
 $browsercount = array();
 $browsernames = array();
 // Gets all the browsers and then counts the number of times they appear in the logs table and adds them to 2 separate arrays
@@ -74,10 +73,10 @@ $content = <<<END
 </script>
 END;
 // echoes the navbar and the piechart
-echo $navigation;
+
 
 // Creates the table and the first row of content of the IP table.
-echo '<table class="table table-dark table-hover w-auto"';
+echo '<table class="table table-dark table-hover w-auto">';
 echo "<tr>";
 echo "<td>IP Adress </td>";
 echo "<td>Number of occurrences </td>";
@@ -108,14 +107,14 @@ echo "<td> {$count} </td>";
 echo "</tr>";
 }
 }
+echo "</table>";
 // html code for selecting which user to display the history for.
 $sql = "SELECT * FROM project_User";
 $all_users = $mysqli->query($sql);
 ?>
-<h1>Analytics</h1>
 <form method="post" action="analytics.php">
-<label for="user" style="display: block; ">Choose User</label>
-<select name="user" class="form-select" style="width: 7%; display: inline; ">
+<label style="display: block; ">Choose User</label>
+<select class="form-select" style="width: 7%; display: inline; ">
         <?php 
         while ($user = mysqli_fetch_array(
             $all_users,MYSQLI_ASSOC)):; 
@@ -126,8 +125,9 @@ $all_users = $mysqli->query($sql);
         ?>
         </option>
         <?php 
-        endwhile; 
+        endwhile;
         ?>
+</select>
 <input type="submit" value="Select User" class="btn btn-primary">
 <input type="reset" value="reset" class="btn btn-primary">
 </form>
@@ -267,7 +267,7 @@ echo $content;
 if (isset($_POST['user'])) {
 $user = $mysqli->real_escape_string($_POST['user']);
 $content = <<<END
-<script type="text/javascript">
+<script>
 SetTable({$user});
 </script>
 END;

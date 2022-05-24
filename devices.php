@@ -64,8 +64,7 @@ if (isset($_SESSION['userId']))
 if (mysqli_num_rows($result) != 0)
 {
 $content .= <<<END
-<button onclick="location.href='add_device.php'" type="button">
-Add Device</button>
+<button onclick='location.href="add_device.php"' type="button">Add Device</button>
 END;
 }
 }

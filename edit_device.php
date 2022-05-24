@@ -33,11 +33,10 @@ $dname=mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM project_Device WH
 
 echo $navigation;
 ?>
-<body>
 <h1>Edit device</h1>
 <form method="post" action="edit_device.php?DeviceID=<?php echo $dname["DeviceID"]?>">
 <input type="text" name="name" value="<?php echo $dname["DeviceName"];?>" required><br>
-<label for="type">Choose device type:</label>
+<label>Choose device type:</label>
 <select name="type">
         <!--Fetches the result from the queries into an associative array-->
         <?php 
@@ -54,7 +53,7 @@ echo $navigation;
         endwhile; 
         ?>
 </select><br>
-<label for="room">Choose which room:</label>
+<label>Choose which room:</label>
 <select name="room">
         <!--Fetches the result from query above into an associative array-->
         <?php 
@@ -73,4 +72,3 @@ echo $navigation;
 </select><br>
 <input type="submit" value="Save changes">
 </form>
-</body>
